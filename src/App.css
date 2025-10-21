@@ -1,4 +1,3 @@
-
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -76,7 +75,19 @@ a:has(.card) .card {
 .border-primary {
   border-color: #09ff00 !important;
 }
-.btn-primary.custom {
-  background-color: #2b7cff;
-  border-color: #245ecf;
+
+/* Rating Bar styles */
+.rating-bar {
+  display: flex;
+  gap: 2px;
+  font-size: 1.5rem;
+}
+
+.rating-bar .star {
+  color: #ffc107;
+  transition: transform 0.2s ease;
+}
+
+.rating-bar .star:hover {
+  transform: scale(1.2);
 }
