@@ -1,8 +1,7 @@
 import ProfileCard from './ProfileCard';
-import { Link } from 'react-router';
 
 function ProfileGrid({ people, columns = 3 }) {
-  // Calculate Bootstrap column classes based on the number of columns
+  // Bootstrap classes based on number of columns
   const getColumnClass = () => {
     switch(columns) {
       case 1: return 'col-12';
@@ -19,14 +18,8 @@ function ProfileGrid({ people, columns = 3 }) {
       <div className="row g-3">
         {people.map(person => (
           <div key={person.id} className={getColumnClass()}>
-            <Link to={`/lab02/${person.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
-              <ProfileCard 
-                name={person.name}
-                email={person.email}
-                birthDate={person.birthDate}
-                phone={person.phone}
-              />
-            </Link>
+            {/* Nie owijamy całej karty w Link */}
+            <ProfileCard {...person} />
           </div>
         ))}
       </div>

@@ -1,13 +1,13 @@
+import { useContext } from 'react';
+import { Link } from 'react-router';
 import ProfileParagraph from './ProfileParagraph';
 import RatingBar from './RatingBar';
+import AppContext from '../data/AppContext';
 
-function PersonCard(profile) {
-  const { dispatch, rating = 0, isChecked = false } = profile;
-
-  const handleEdit = () => {
-    console.log('Edycja profilu:', profile.name);
-    alert(`Edycja profilu: ${profile.name}`);
-  };
+function ProfileCardLab3(profile) {
+  const { rating = 0, isChecked = false } = profile;
+  const context = useContext(AppContext);
+  const dispatch = context.dispatch;
 
   const handleCheck = () => {
     dispatch({ type: 'check', id: profile.id });
@@ -28,6 +28,15 @@ function PersonCard(profile) {
 
   return (
       <div className={`card shadow-sm h-100 ${isChecked ? 'border-success border-3' : ''}`}>
+        {profile.photo && (
+          <img 
+            src={profile.photo} 
+            className="card-img-top" 
+            alt={profile.name}
+            style={{ height: '200px', objectFit: 'cover' }}
+            onError={(e) => { e.target.style.display = 'none'; }}
+          />
+        )}
         <div className="card-body d-flex flex-column">
           <h2 className="card-title h5 text-center text-dark border-bottom border-primary pb-2 mb-3">
             Profil użytkownika
@@ -38,6 +47,22 @@ function PersonCard(profile) {
           <ProfileParagraph label="Telefon" title={profile.phone}/>
           <ProfileParagraph label="Data urodzin" title={profile.birthDate}/>
           
+          {profile.url && (
+            <div className="mb-3">
+              <strong>URL:</strong>
+              <div className="mt-1">
+                <a 
+                  href={profile.url} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-primary text-break"
+                >
+                  {profile.url}
+                </a>
+              </div>
+            </div>
+          )}
+          
           <div className="mb-3">
             <strong>Rating:</strong>
             <div className="mt-1">
@@ -47,12 +72,12 @@ function PersonCard(profile) {
 
           <div className="mt-auto pt-3">
             <div className="d-flex flex-wrap gap-2 mb-2">
-              <button 
-                className="btn btn-primary btn-sm flex-fill"
-                onClick={handleEdit}
+              <Link 
+                to={`/lab4/edit/${profile.id}`}
+                className="btn btn-primary btn-sm flex-fill text-decoration-none"
               >
                 Edit
-              </button>
+              </Link>
               <button 
                 className="btn btn-danger btn-sm flex-fill"
                 onClick={handleDelete}
@@ -80,4 +105,4 @@ function PersonCard(profile) {
   );
 }
 
-export default PersonCard;
+export default ProfileCardLab3;

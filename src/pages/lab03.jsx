@@ -3,7 +3,8 @@ import { people } from '../module-data.js';
 import PersonCard from '../components/PersonCard';
 import MyContainer from '../components/MyContainer';
 
-function Lab3Page() {
+
+function Lab3() {
   return (
     <div className="bg-light py-5">
       <div className="container">
@@ -20,4 +21,4 @@ function Lab3Page() {
   );
 }
 
-export default Lab3Page;
+export default Lab3;
