@@ -1,13 +1,11 @@
-import { useContext } from 'react';
 import { Link } from 'react-router';
 import ProfileParagraph from './ProfileParagraph';
 import RatingBar from './RatingBar';
-import AppContext from '../data/AppContext';
+import useDispatch from '../hooks/useDispatch';
 
 function ProfileCardLab3(profile) {
   const { rating = 0, isChecked = false } = profile;
-  const context = useContext(AppContext);
-  const dispatch = context.dispatch;
+  const dispatch = useDispatch();
 
   const handleCheck = () => {
     dispatch({ type: 'check', id: profile.id });

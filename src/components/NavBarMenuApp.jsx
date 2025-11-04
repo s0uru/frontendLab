@@ -28,7 +28,10 @@ function NavBarMenuApp() {
             <Nav.Link as={NavLink} to="/lab04">
               Laboratorium 4
             </Nav.Link>
-          </Nav>
+            <Nav.Link as={NavLink} to="/lab05">
+              Laboratorium 5
+            </Nav.Link>
+           </Nav>
           <Nav>
             <Nav.Link as={NavLink} to="/lab04/add" className="btn btn-success btn-sm text-white">
               Dodaj osobę

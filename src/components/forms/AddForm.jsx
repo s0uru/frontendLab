@@ -1,16 +1,15 @@
-import { useState, useContext } from 'react';
+import { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link, useNavigate } from 'react-router';
-import AppContext from '../../data/AppContext';
+import useDispatch from '../../hooks/useDispatch';
 
 function AddForm() {
   const [errors, setErrors] = useState([]);
   const [isSending, setIsSending] = useState(false);
   const navigate = useNavigate();
   
-  // Pobierz kontekst i dispatch
-  const context = useContext(AppContext);
-  const dispatch = context.dispatch;
+  // Pobierz dispatch z hooka
+  const dispatch = useDispatch();
 
   const onSubmitFunction = async (e) => {
     e.preventDefault();

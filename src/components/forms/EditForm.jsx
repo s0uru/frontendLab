@@ -1,16 +1,16 @@
-import { useContext, useEffect } from 'react';
+import { useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link, useParams, useNavigate } from 'react-router';
 import { useForm } from 'react-hook-form';
-import AppContext from "../../data/AppContext";
+import useData from '../../hooks/useData';
+import useDispatch from '../../hooks/useDispatch';
 
 
 function EditForm() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const context = useContext(AppContext);
-  const items = context.items;
-  const dispatch = context.dispatch;
+  const items = useData();
+  const dispatch = useDispatch();
   
   const { register, handleSubmit, formState: { errors, isSubmitting }, setValue, reset } = useForm();
 
